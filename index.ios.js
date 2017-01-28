@@ -28,7 +28,6 @@ const top = (Platform.OS === 'ios') ? 20 : 0;
 
 const styles = StyleSheet.create({
   container: {
-    top: 100,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

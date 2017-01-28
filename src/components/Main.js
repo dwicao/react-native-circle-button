@@ -34,16 +34,14 @@ class Main extends Component {
   }
 
   _onPress() {
-    const DURATION = 200;
-
-    this.createAnimation(this.rotateAnimated, 1, DURATION);
-    this.createAnimation(this.scaleAnimated, 1, DURATION);
+    this.createAnimation(this.rotateAnimated, 1, 200);
+    this.createAnimation(this.scaleAnimated, 1, 200);
 
     this.setState({ isClicked: !this.state.isClicked });
 
     if (this.state.isClicked) {
-      this.createAnimation(this.rotateAnimated, 2, DURATION);
-      this.createAnimation(this.scaleAnimated, 0, DURATION);
+      this.createAnimation(this.rotateAnimated, 2, 200);
+      this.createAnimation(this.scaleAnimated, 0, 200);
     }
   }
 
@@ -55,17 +53,17 @@ class Main extends Component {
 
     const scaleMe = this.scaleAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [1, 3]
+	    outputRange: [SIZE, SIZE*3]
 	  });
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.button}>
-          <Animated.View style={{transform: [{rotate: rotateMe}]}}>
+        <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
+          <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.button}>
             <Image source={addIcon} style={styles.addImage} />
-          </Animated.View>
-        </TouchableOpacity>
-        <Animated.View style={[ styles.circle, {transform: [{scale: scaleMe}]} ]} />
+          </TouchableOpacity>
+        </Animated.View>
+        <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe} ]} />
       </View>
     );
   }
@@ -76,6 +74,10 @@ const SIZE = 40;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonWrapper: {
   },
   button: {
     alignItems: 'center',
@@ -96,12 +98,8 @@ const styles = StyleSheet.create({
     height: SIZE - 5,
   },
   circle: {
-    width: SIZE,
-    height: SIZE,
     marginTop: -SIZE,
-    borderWidth: 0,
 		borderRadius: 360,
-		alignSelf: 'center',
 		backgroundColor: '#459186',
     zIndex: -9999,
 	},
