@@ -21,6 +21,7 @@ class Main extends Component {
     this.rotateAnimated = new Animated.Value(0);
     this.scaleAnimated = new Animated.Value(0);
     this.bringToBackAnimated = new Animated.Value(0);
+    this.bringToLeftAnimated = new Animated.Value(0)
     this._onPress = this._onPress.bind(this);
   }
 
@@ -39,6 +40,7 @@ class Main extends Component {
     this.createAnimation(this.rotateAnimated, 1, 200);
     this.createAnimation(this.scaleAnimated, 1, 200);
     this.createAnimation(this.bringToBackAnimated, 1, 200);
+    this.createAnimation(this.bringToLeftAnimated, 1, 200);
 
     this.setState({ isClicked: !this.state.isClicked });
 
@@ -46,6 +48,7 @@ class Main extends Component {
       this.createAnimation(this.rotateAnimated, 2, 200);
       this.createAnimation(this.scaleAnimated, 0, 200);
       this.createAnimation(this.bringToBackAnimated, 0, 200);
+      this.createAnimation(this.bringToLeftAnimated, 0, 200);
     }
   }
 
@@ -65,6 +68,11 @@ class Main extends Component {
 	    outputRange: [99, -1]
 	  });
 
+    const bringMeToLeft = this.bringToLeftAnimated.interpolate({
+	    inputRange: [0, 1],
+	    outputRange: [SIZE, 0]
+	  });
+
     return (
       <View style={styles.container}>
         <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
@@ -72,9 +80,11 @@ class Main extends Component {
         </TouchableOpacity>
 
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe, zIndex: bringToBack } ]}>
-          <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
-            <Image source={settingIcon} style={styles.childImage} />
-          </TouchableOpacity>
+          <Animated.View style={{ left: bringMeToLeft }}>
+            <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
+              <Image source={settingIcon} style={styles.childImage} />
+            </TouchableOpacity>
+          </Animated.View>
 
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
@@ -82,9 +92,11 @@ class Main extends Component {
             </TouchableOpacity>
           </Animated.View>
 
-          <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
-            <Image source={settingIcon} style={styles.childImage} />
-          </TouchableOpacity>
+          <Animated.View style={{ zIndex: bringMeToLeft }}>
+            <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
+              <Image source={settingIcon} style={styles.childImage} />
+            </TouchableOpacity>
+          </Animated.View>
         </Animated.View>
 
         <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
