@@ -66,7 +66,7 @@ class Main extends Component {
 
     const scaleMe = this.scaleAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [SIZE, SIZE*2.8]
+	    outputRange: [SIZE, SIZE * 2.8]
 	  });
 
     const bringToBack = this.bringToBackAnimated.interpolate({
@@ -112,14 +112,17 @@ class Main extends Component {
             </TouchableOpacity>
           </Animated.View>
 
+          <Animated.View style={{ top: bringMeToRight }}>
+            <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
+              <Image source={settingIcon} style={styles.childImage} />
+            </TouchableOpacity>
+          </Animated.View>
+
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
               <Image source={addIcon} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
-          <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
-            <Image source={settingIcon} style={styles.childImage} />
-          </TouchableOpacity>
         </Animated.View>
 
       </View>
@@ -137,7 +140,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonWrapper: {
-    right: SIZE-5,
+    right: (SIZE * 2) - 10,
   },
   buttonLeft: {
     alignItems: 'center',
@@ -162,7 +165,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#41727E',
   },
   buttonTop: {
-    right: -SIZE*1.85,
+    right: (-SIZE * 2) + 7,
     alignItems: 'center',
     justifyContent: 'center',
     width: SIZE - 5,
@@ -170,6 +173,7 @@ const styles = StyleSheet.create({
     borderRadius: 360,
   },
   buttonBottom: {
+    right: SIZE-7,
     alignItems: 'center',
     justifyContent: 'center',
     width: SIZE - 5,
