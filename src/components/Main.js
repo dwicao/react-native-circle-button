@@ -58,12 +58,13 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
-        <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
-          <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.button}>
-            <Image source={addIcon} style={styles.addImage} />
-          </TouchableOpacity>
+        <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe} ]}>
+          <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
+            <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.button}>
+              <Image source={addIcon} style={styles.addImage} />
+            </TouchableOpacity>
+          </Animated.View>
         </Animated.View>
-        <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe} ]} />
       </View>
     );
   }
@@ -98,7 +99,8 @@ const styles = StyleSheet.create({
     height: SIZE - 5,
   },
   circle: {
-    marginTop: -SIZE,
+    alignItems: 'center',
+    justifyContent: 'center',
 		borderRadius: 360,
 		backgroundColor: '#459186',
     zIndex: -9999,
