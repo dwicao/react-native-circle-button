@@ -21,7 +21,8 @@ class Main extends Component {
     this.rotateAnimated = new Animated.Value(0);
     this.scaleAnimated = new Animated.Value(0);
     this.bringToBackAnimated = new Animated.Value(0);
-    this.bringToLeftAnimated = new Animated.Value(0)
+    this.bringToLeftAnimated = new Animated.Value(0);
+    this.bringToRightAnimated = new Animated.Value(0);
     this._onPress = this._onPress.bind(this);
   }
 
@@ -41,6 +42,7 @@ class Main extends Component {
     this.createAnimation(this.scaleAnimated, 1, 200);
     this.createAnimation(this.bringToBackAnimated, 1, 200);
     this.createAnimation(this.bringToLeftAnimated, 1, 200);
+    this.createAnimation(this.bringToRightAnimated, 1, 200);
 
     this.setState({ isClicked: !this.state.isClicked });
 
@@ -49,6 +51,7 @@ class Main extends Component {
       this.createAnimation(this.scaleAnimated, 0, 200);
       this.createAnimation(this.bringToBackAnimated, 0, 200);
       this.createAnimation(this.bringToLeftAnimated, 0, 200);
+      this.createAnimation(this.bringToRightAnimated, 0, 200);
     }
   }
 
@@ -73,15 +76,26 @@ class Main extends Component {
 	    outputRange: [SIZE, 0]
 	  });
 
+    const bringMeToRight = this.bringToRightAnimated.interpolate({
+	    inputRange: [0, 1],
+	    outputRange: [0, SIZE]
+	  });
+
     return (
       <View style={styles.container}>
-        <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
+        {/* <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
           <Image source={settingIcon} style={styles.childImage} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe, zIndex: bringToBack } ]}>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
+              <Image source={settingIcon} style={styles.childImage} />
+            </TouchableOpacity>
+          </Animated.View>
+
+          <Animated.View style={{ left: bringMeToRight }}>
+            <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
               <Image source={settingIcon} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
@@ -91,17 +105,11 @@ class Main extends Component {
               <Image source={addIcon} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
-
-          <Animated.View style={{ zIndex: bringMeToLeft }}>
-            <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
-              <Image source={settingIcon} style={styles.childImage} />
-            </TouchableOpacity>
-          </Animated.View>
         </Animated.View>
 
-        <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
+        {/* <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
           <Image source={settingIcon} style={styles.childImage} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }
@@ -116,6 +124,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonWrapper: {
+    right: SIZE-5,
   },
   buttonLeft: {
     alignItems: 'center',
