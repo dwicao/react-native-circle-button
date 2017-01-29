@@ -67,18 +67,29 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
+        <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
+          <Image source={settingIcon} style={styles.childImage} />
+        </TouchableOpacity>
+
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe, zIndex: bringToBack } ]}>
+          <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
+            <Image source={settingIcon} style={styles.childImage} />
+          </TouchableOpacity>
+
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
               <Image source={addIcon} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
-        </Animated.View>
-        <Animated.View>
-          <TouchableOpacity activeOpacity={1} style={styles.buttonSetting}>
+
+          <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
             <Image source={settingIcon} style={styles.childImage} />
           </TouchableOpacity>
         </Animated.View>
+
+        <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
+          <Image source={settingIcon} style={styles.childImage} />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -94,6 +105,20 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
   },
+  buttonLeft: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: SIZE - 5,
+    height: SIZE - 5,
+    borderRadius: 360,
+  },
+  buttonRight: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: SIZE - 5,
+    height: SIZE - 5,
+    borderRadius: 360,
+  },
   buttonCenter: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -102,9 +127,15 @@ const styles = StyleSheet.create({
     borderRadius: 360,
     backgroundColor: '#41727E',
   },
-  buttonSettingWrapper: {
+  buttonTop: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: -SIZE+5,
+    width: SIZE - 5,
+    height: SIZE - 5,
+    borderRadius: 360,
   },
-  buttonSetting: {
+  buttonBottom: {
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: -SIZE+5,
@@ -126,6 +157,7 @@ const styles = StyleSheet.create({
     height: SIZE - 15,
   },
   circle: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
 		borderRadius: 360,
