@@ -7,8 +7,11 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import addIcon from '../images/add.png';
-import settingIcon from '../images/setting.png';
+import iconAdd from '../images/add.png';
+import iconSetting from '../images/setting.png';
+import iconEmail from '../images/email.png';
+import iconPerson from '../images/person.png';
+import iconPencil from '../images/pencil.png';
 
 class Main extends Component {
   constructor() {
@@ -166,27 +169,27 @@ class Main extends Component {
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
-              <Image source={settingIcon} style={styles.childImage} />
+              <Image source={iconPerson} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
-              <Image source={settingIcon} style={styles.childImage} />
+              <Image source={iconPencil} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
-              <Image source={settingIcon} style={styles.childImage} />
+              <Image source={iconEmail} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToRight }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
-              <Image source={settingIcon} style={styles.childImage} />
+              <Image source={iconSetting} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
-              <Image source={addIcon} style={styles.centerImage} />
+              <Image source={iconAdd} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
