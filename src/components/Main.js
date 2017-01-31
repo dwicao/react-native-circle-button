@@ -59,6 +59,78 @@ class Main extends Component {
   }
 
   render() {
+    const { size } = this.props;
+
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      buttonWrapper: {
+        right: (size * 2) - 10,
+      },
+      buttonLeft: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size - 5,
+        height: size - 5,
+        borderRadius: 360,
+      },
+      buttonRight: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size - 5,
+        height: size - 5,
+        borderRadius: 360,
+      },
+      buttonCenter: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size,
+        height: size,
+        borderRadius: 360,
+        backgroundColor: '#41727E',
+      },
+      buttonTop: {
+        right: (-size * 2) + 7,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size - 5,
+        height: size - 5,
+        borderRadius: 360,
+      },
+      buttonBottom: {
+        right: size-7,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: size - 5,
+        height: size - 5,
+        borderRadius: 360,
+      },
+      text: {
+        color: '#EECE69',
+        fontWeight: 'bold',
+        letterSpacing: 1,
+      },
+      centerImage: {
+        width: size - 5,
+        height: size - 5,
+      },
+      childImage: {
+        width: size - 15,
+        height: size - 15,
+      },
+      circle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 360,
+        backgroundColor: '#459186',
+      },
+    });
+
     const rotateMe = this.rotateAnimated.interpolate({
 	    inputRange: [0, 1, 2],
 	    outputRange: ['0deg', '45deg', '0deg']
@@ -66,7 +138,7 @@ class Main extends Component {
 
     const scaleMe = this.scaleAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [SIZE, SIZE * 2.8]
+	    outputRange: [size, size * 2.8]
 	  });
 
     const bringToBack = this.bringToBackAnimated.interpolate({
@@ -76,130 +148,55 @@ class Main extends Component {
 
     const bringMeToLeft = this.bringToLeftAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [SIZE, 0]
+	    outputRange: [size, 0]
 	  });
 
     const bringMeToRight = this.bringToRightAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [0, SIZE]
+	    outputRange: [0, size]
 	  });
 
     const bringMeToTop = this.bringToTopAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [0, -SIZE]
+	    outputRange: [0, -size]
 	  });
 
     return (
       <View style={styles.container}>
-
-
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
               <Image source={settingIcon} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
-
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
               <Image source={settingIcon} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
-
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
               <Image source={settingIcon} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
-
           <Animated.View style={{ top: bringMeToRight }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
               <Image source={settingIcon} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
-
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
               <Image source={addIcon} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
-
       </View>
     );
   }
 }
 
-const SIZE = 45;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonWrapper: {
-    right: (SIZE * 2) - 10,
-  },
-  buttonLeft: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: SIZE - 5,
-    height: SIZE - 5,
-    borderRadius: 360,
-  },
-  buttonRight: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: SIZE - 5,
-    height: SIZE - 5,
-    borderRadius: 360,
-  },
-  buttonCenter: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: SIZE,
-    height: SIZE,
-    borderRadius: 360,
-    backgroundColor: '#41727E',
-  },
-  buttonTop: {
-    right: (-SIZE * 2) + 7,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: SIZE - 5,
-    height: SIZE - 5,
-    borderRadius: 360,
-  },
-  buttonBottom: {
-    right: SIZE-7,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: SIZE - 5,
-    height: SIZE - 5,
-    borderRadius: 360,
-  },
-  text: {
-    color: '#EECE69',
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  centerImage: {
-    width: SIZE - 5,
-    height: SIZE - 5,
-  },
-  childImage: {
-    width: SIZE - 15,
-    height: SIZE - 15,
-  },
-  circle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-		borderRadius: 360,
-		backgroundColor: '#459186',
-	},
-});
+Main.defaultProps = {
+  size: 40
+};
 
 export default Main;
