@@ -6,6 +6,7 @@ import {
   Image,
   Animated,
   Easing,
+  Alert,
 } from 'react-native';
 import iconAdd from '../images/add.png';
 import iconSetting from '../images/setting.png';
@@ -98,7 +99,7 @@ class Main extends Component {
 
 
   render() {
-    const { size } = this.props;
+    const { size, primaryColor, secondaryColor } = this.props;
 
     const styles = StyleSheet.create({
       container: {
@@ -130,7 +131,7 @@ class Main extends Component {
         width: size,
         height: size,
         borderRadius: 360,
-        backgroundColor: '#41727E',
+        backgroundColor: primaryColor,
       },
       buttonTop: {
         right: (-size * 2) + 7,
@@ -166,7 +167,7 @@ class Main extends Component {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 360,
-        backgroundColor: '#459186',
+        backgroundColor: secondaryColor,
       },
     });
 
@@ -245,6 +246,13 @@ Main.defaultProps = {
   onPressButtonRight: () => {},
   onPressButtonBottom: () => {},
   onPressButtonLeft: () => {},
+  iconButtonCenter: iconAdd,
+  iconButtonTop: iconAdd,
+  iconButtonRight: iconAttach,
+  iconButtonBottom: iconSetting,
+  iconButtonLeft: iconEmail,
+  primaryColor: '#41727E',
+  secondaryColor: '#459186',
 };
 
 Main.propTypes = {
@@ -253,6 +261,13 @@ Main.propTypes = {
   onPressButtonRight: PropTypes.func,
   onPressButtonBottom: PropTypes.func,
   onPressButtonLeft: PropTypes.func,
+  iconButtonCenter: PropTypes.number,
+  iconButtonTop: PropTypes.number,
+  iconButtonRight: PropTypes.number,
+  iconButtonBottom: PropTypes.number,
+  iconButtonLeft: PropTypes.number,
+  primaryColor: PropTypes.string,
+  secondaryColor: PropTypes.string,
 };
 
 export default Main;
