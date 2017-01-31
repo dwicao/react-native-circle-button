@@ -27,6 +27,7 @@ class Main extends Component {
     this.bringToLeftAnimated = new Animated.Value(0);
     this.bringToRightAnimated = new Animated.Value(0);
     this.bringToTopAnimated = new Animated.Value(0);
+    this.bringToBottomAnimated = new Animated.Value(0);
     this._onPress = this._onPress.bind(this);
   }
 
@@ -48,6 +49,7 @@ class Main extends Component {
     this.createAnimation(this.bringToLeftAnimated, 1, 200);
     this.createAnimation(this.bringToRightAnimated, 1, 200);
     this.createAnimation(this.bringToTopAnimated, 1, 200);
+    this.createAnimation(this.bringToBottomAnimated, 1, 200);
 
     this.setState({ isClicked: !this.state.isClicked });
 
@@ -58,6 +60,7 @@ class Main extends Component {
       this.createAnimation(this.bringToLeftAnimated, 0, 200);
       this.createAnimation(this.bringToRightAnimated, 0, 200);
       this.createAnimation(this.bringToTopAnimated, 0, 200);
+      this.createAnimation(this.bringToBottomAnimated, 0, 200);
     }
   }
 
@@ -161,8 +164,13 @@ class Main extends Component {
 
     const bringMeToTop = this.bringToTopAnimated.interpolate({
 	    inputRange: [0, 1],
-	    outputRange: [0, -size]
+	    outputRange: [0, -size + 2]
 	  });
+
+    const bringMeToBottom = this.bringToBottomAnimated.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, size - 2]
+    });
 
     return (
       <View style={styles.container}>
@@ -182,7 +190,7 @@ class Main extends Component {
               <Image source={iconEmail} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
-          <Animated.View style={{ top: bringMeToRight }}>
+          <Animated.View style={{ top: bringMeToBottom }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
               <Image source={iconSetting} style={styles.childImage} />
             </TouchableOpacity>
