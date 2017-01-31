@@ -11,7 +11,7 @@ import iconAdd from '../images/add.png';
 import iconSetting from '../images/setting.png';
 import iconEmail from '../images/email.png';
 import iconPerson from '../images/person.png';
-import iconPencil from '../images/pencil.png';
+import iconAttach from '../images/attach.png';
 
 class Main extends Component {
   constructor() {
@@ -182,12 +182,12 @@ class Main extends Component {
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
-              <Image source={iconPencil} style={styles.childImage} />
+              <Image source={iconEmail} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
-              <Image source={iconEmail} style={styles.childImage} />
+              <Image source={iconAttach} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
