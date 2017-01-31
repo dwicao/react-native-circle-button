@@ -29,6 +29,7 @@ class Main extends Component {
     this.bringToTopAnimated = new Animated.Value(0);
     this.bringToBottomAnimated = new Animated.Value(0);
     this._onPress = this._onPress.bind(this);
+    this._buttonTop = this._buttonTop.bind(this);
   }
 
   createAnimation(obj, toValue, duration, easing) {
@@ -42,7 +43,7 @@ class Main extends Component {
     ).start();
   }
 
-  _onPress() {
+  startAnimation() {
     this.createAnimation(this.rotateAnimated, 1, 200);
     this.createAnimation(this.scaleAnimated, 1, 200);
     this.createAnimation(this.bringToBackAnimated, 1, 150);
@@ -50,18 +51,28 @@ class Main extends Component {
     this.createAnimation(this.bringToRightAnimated, 1, 200);
     this.createAnimation(this.bringToTopAnimated, 1, 200);
     this.createAnimation(this.bringToBottomAnimated, 1, 200);
+  }
 
+  endAnimation() {
+    this.createAnimation(this.rotateAnimated, 2, 200);
+    this.createAnimation(this.scaleAnimated, 0, 200);
+    this.createAnimation(this.bringToBackAnimated, 0, 2000);
+    this.createAnimation(this.bringToLeftAnimated, 0, 200);
+    this.createAnimation(this.bringToRightAnimated, 0, 200);
+    this.createAnimation(this.bringToTopAnimated, 0, 200);
+    this.createAnimation(this.bringToBottomAnimated, 0, 200);  
+  }
+
+  _onPress() {
+    this.startAnimation();
     this.setState({ isClicked: !this.state.isClicked });
 
-    if (this.state.isClicked) {
-      this.createAnimation(this.rotateAnimated, 2, 200);
-      this.createAnimation(this.scaleAnimated, 0, 200);
-      this.createAnimation(this.bringToBackAnimated, 0, 2000);
-      this.createAnimation(this.bringToLeftAnimated, 0, 200);
-      this.createAnimation(this.bringToRightAnimated, 0, 200);
-      this.createAnimation(this.bringToTopAnimated, 0, 200);
-      this.createAnimation(this.bringToBottomAnimated, 0, 200);
-    }
+    if (this.state.isClicked) this.endAnimation();
+  }
+
+  _buttonTop() {
+    this.setState({ isClicked: !this.state.isClicked });
+    this.endAnimation();
   }
 
   render() {
@@ -176,7 +187,7 @@ class Main extends Component {
       <View style={styles.container}>
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
-            <TouchableOpacity activeOpacity={1} style={styles.buttonTop}>
+            <TouchableOpacity onPress={this._buttonTop} activeOpacity={1} style={styles.buttonTop}>
               <Image source={iconPerson} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
@@ -207,7 +218,11 @@ class Main extends Component {
 }
 
 Main.defaultProps = {
-  size: 40
+  size: 40,
+};
+
+Main.propTypes = {
+  size: PropTypes.number,
 };
 
 export default Main;
