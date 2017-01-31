@@ -28,8 +28,11 @@ class Main extends Component {
     this.bringToRightAnimated = new Animated.Value(0);
     this.bringToTopAnimated = new Animated.Value(0);
     this.bringToBottomAnimated = new Animated.Value(0);
-    this._onPress = this._onPress.bind(this);
+    this._buttonCenter = this._buttonCenter.bind(this);
     this._buttonTop = this._buttonTop.bind(this);
+    this._buttonRight = this._buttonRight.bind(this);
+    this._buttonBottom = this._buttonBottom.bind(this);
+    this._buttonLeft = this._buttonLeft.bind(this);
   }
 
   createAnimation(obj, toValue, duration, easing) {
@@ -63,7 +66,7 @@ class Main extends Component {
     this.createAnimation(this.bringToBottomAnimated, 0, 200);  
   }
 
-  _onPress() {
+  _buttonCenter() {
     this.startAnimation();
     this.setState({ isClicked: !this.state.isClicked });
 
@@ -73,7 +76,26 @@ class Main extends Component {
   _buttonTop() {
     this.setState({ isClicked: !this.state.isClicked });
     this.endAnimation();
+    this.props.onPressButtonTop();
   }
+
+  _buttonRight() {
+    this.setState({ isClicked: !this.state.isClicked });
+    this.endAnimation();
+    this.props.onPressButtonRight();
+  }
+
+  _buttonBottom() {
+    this.setState({ isClicked: !this.state.isClicked });
+    this.endAnimation();
+    this.props.onPressButtonBottom();
+  }
+  _buttonLeft() {
+    this.setState({ isClicked: !this.state.isClicked });
+    this.endAnimation();
+    this.props.onPressButtonLeft();
+  }
+
 
   render() {
     const { size } = this.props;
@@ -192,22 +214,22 @@ class Main extends Component {
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
-            <TouchableOpacity activeOpacity={1} style={styles.buttonLeft}>
+            <TouchableOpacity onPress={this._buttonLeft} activeOpacity={1} style={styles.buttonLeft}>
               <Image source={iconEmail} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
-            <TouchableOpacity activeOpacity={1} style={styles.buttonRight}>
+            <TouchableOpacity onPress={this._buttonRight} activeOpacity={1} style={styles.buttonRight}>
               <Image source={iconAttach} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
-            <TouchableOpacity activeOpacity={1} style={styles.buttonBottom}>
+            <TouchableOpacity onPress={this._buttonBottom} activeOpacity={1} style={styles.buttonBottom}>
               <Image source={iconSetting} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
-            <TouchableOpacity onPress={this._onPress} activeOpacity={1} style={styles.buttonCenter}>
+            <TouchableOpacity onPress={this._buttonCenter} activeOpacity={1} style={styles.buttonCenter}>
               <Image source={iconAdd} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
@@ -219,10 +241,18 @@ class Main extends Component {
 
 Main.defaultProps = {
   size: 40,
+  onPressButtonTop: () => {},
+  onPressButtonRight: () => {},
+  onPressButtonBottom: () => {},
+  onPressButtonLeft: () => {},
 };
 
 Main.propTypes = {
   size: PropTypes.number,
+  onPressButtonTop: PropTypes.func,
+  onPressButtonRight: PropTypes.func,
+  onPressButtonBottom: PropTypes.func,
+  onPressButtonLeft: PropTypes.func,
 };
 
 export default Main;
