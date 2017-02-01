@@ -19,6 +19,10 @@
     "circle",
     "button"
   ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "author": "Lutfian Dwi Cahyono <lutfiandwica@gmail.com> (https://dwicao.github.io/)",
   "license": "MIT",
   "bugs": {

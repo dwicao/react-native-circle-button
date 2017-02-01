@@ -8,11 +8,11 @@ import {
   Easing,
   Alert,
 } from 'react-native';
-import iconAdd from '../images/add.png';
-import iconSetting from '../images/setting.png';
-import iconEmail from '../images/email.png';
-import iconPerson from '../images/person.png';
-import iconAttach from '../images/attach.png';
+import iconAdd from './images/add.png';
+import iconSetting from './images/setting.png';
+import iconEmail from './images/email.png';
+import iconPerson from './images/person.png';
+import iconAttach from './images/attach.png';
 
 class Main extends Component {
   constructor() {
