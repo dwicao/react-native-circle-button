@@ -14,7 +14,7 @@ import iconEmail from './images/email.png';
 import iconPerson from './images/person.png';
 import iconAttach from './images/attach.png';
 
-class Main extends Component {
+class CircleButton extends Component {
   constructor() {
     super();
 
@@ -239,7 +239,7 @@ class Main extends Component {
   }
 }
 
-Main.defaultProps = {
+CircleButton.defaultProps = {
   size: 40,
   onPressButtonTop: () => {},
   onPressButtonRight: () => {},
@@ -254,7 +254,7 @@ Main.defaultProps = {
   secondaryColor: '#459186',
 };
 
-Main.propTypes = {
+CircleButton.propTypes = {
   size: PropTypes.number,
   onPressButtonTop: PropTypes.func,
   onPressButtonRight: PropTypes.func,
@@ -269,4 +269,4 @@ Main.propTypes = {
   secondaryColor: PropTypes.string,
 };
 
-module.exports = SubmitButton;
+module.exports = CircleButton;
