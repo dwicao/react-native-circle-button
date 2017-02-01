@@ -97,7 +97,6 @@ class Main extends Component {
     this.props.onPressButtonLeft();
   }
 
-
   render() {
     const { size, primaryColor, secondaryColor } = this.props;
 
