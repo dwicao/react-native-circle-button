@@ -1,7 +1,5 @@
 # react-native-circle-button
 
-[![](https://img.shields.io/npm/v/react-native-circle-button.svg)](https://www.npmjs.com/package/react-native-circle-button) [![](https://img.shields.io/npm/l/react-native-circle-button.svg)](https://www.npmjs.com/package/react-native-circle-button)
-
 A Customizable React Native Circle Button, works on both Android and iOS.
 
 ![demo](https://raw.githubusercontent.com/dwicao/react-native-circle-button/master/demo.gif)
