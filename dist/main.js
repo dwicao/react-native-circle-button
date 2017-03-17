@@ -19,8 +19,8 @@ class CircleButton extends Component {
     super();
 
     this.state = {
-			isClicked: false,
-		};
+      isClicked: false,
+    };
 
     this.rotateAnimated = new Animated.Value(0);
     this.scaleAnimated = new Animated.Value(0);
@@ -171,34 +171,34 @@ class CircleButton extends Component {
     });
 
     const rotateMe = this.rotateAnimated.interpolate({
-	    inputRange: [0, 1, 2],
-	    outputRange: ['0deg', '45deg', '0deg']
-	  });
+      inputRange: [0, 1, 2],
+      outputRange: ['0deg', '45deg', '0deg']
+    });
 
     const scaleMe = this.scaleAnimated.interpolate({
-	    inputRange: [0, 1],
-	    outputRange: [size, size * 2.8]
-	  });
+      inputRange: [0, 1],
+      outputRange: [size, size * 2.8]
+    });
 
     const bringToBack = this.bringToBackAnimated.interpolate({
-	    inputRange: [0, 1],
-	    outputRange: [99, -1]
-	  });
+      inputRange: [0, 1],
+      outputRange: [99, -1]
+    });
 
     const bringMeToLeft = this.bringToLeftAnimated.interpolate({
-	    inputRange: [0, 1],
-	    outputRange: [size, 0]
-	  });
+      inputRange: [0, 1],
+      outputRange: [size, 0]
+    });
 
     const bringMeToRight = this.bringToRightAnimated.interpolate({
-	    inputRange: [0, 1],
-	    outputRange: [0, size]
-	  });
+      inputRange: [0, 1],
+      outputRange: [0, size]
+    });
 
     const bringMeToTop = this.bringToTopAnimated.interpolate({
-	    inputRange: [0, 1],
-	    outputRange: [0, -size + 2]
-	  });
+      inputRange: [0, 1],
+      outputRange: [0, -size + 2]
+    });
 
     const bringMeToBottom = this.bringToBottomAnimated.interpolate({
       inputRange: [0, 1],
@@ -210,27 +210,27 @@ class CircleButton extends Component {
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
             <TouchableOpacity onPress={this._buttonTop} activeOpacity={1} style={styles.buttonTop}>
-              <Image source={iconPerson} style={styles.childImage} />
+              <Image source={this.props.iconButtonTop} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity onPress={this._buttonLeft} activeOpacity={1} style={styles.buttonLeft}>
-              <Image source={iconEmail} style={styles.childImage} />
+              <Image source={this.props.iconButtonLeft} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity onPress={this._buttonRight} activeOpacity={1} style={styles.buttonRight}>
-              <Image source={iconAttach} style={styles.childImage} />
+              <Image source={this.props.iconButtonRight} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
             <TouchableOpacity onPress={this._buttonBottom} activeOpacity={1} style={styles.buttonBottom}>
-              <Image source={iconSetting} style={styles.childImage} />
+              <Image source={this.props.iconButtonBottom} style={styles.childImage} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._buttonCenter} activeOpacity={1} style={styles.buttonCenter}>
-              <Image source={iconAdd} style={styles.centerImage} />
+              <Image source={this.props.iconButtonCenter} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
@@ -246,7 +246,7 @@ CircleButton.defaultProps = {
   onPressButtonBottom: () => {},
   onPressButtonLeft: () => {},
   iconButtonCenter: iconAdd,
-  iconButtonTop: iconAdd,
+  iconButtonTop: iconPerson,
   iconButtonRight: iconAttach,
   iconButtonBottom: iconSetting,
   iconButtonLeft: iconEmail,

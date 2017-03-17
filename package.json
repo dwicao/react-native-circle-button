@@ -1,6 +1,6 @@
 {
   "name": "react-native-circle-button",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Native Circle Button",
   "main": "dist/main.js",
   "scripts": {
