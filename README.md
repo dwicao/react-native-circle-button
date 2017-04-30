@@ -9,12 +9,6 @@ A Customizable React Native Circle Button, works on both Android and iOS.
 ## Inspiration
 [Ux Concept](https://dribbble.com/shots/2233249-Ux-Concept) by [Nick Kumbari](https://dribbble.com/kumbari)
 
-## Running Example
-* `git clone https://github.com/dwicao/react-native-circle-button.git`
-* `cd example`
-* `npm install`
-* `react-native run-android`
-
 ## Installation
 * `npm install --save react-native-circle-button`
 
