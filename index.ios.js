@@ -6,13 +6,13 @@ import {
   View,
   Platform
 } from 'react-native';
-import CircleButton from 'react-native-circle-button';
+import CircleButton from './src';
 
 export default class sparkClick extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CircleButton />
+        <CircleButton primaryColor="rgba(0, 0, 0, 0.2)" secondaryColor="rgba(0, 0, 0, 0.1)"/>
       </View>
     );
   }
