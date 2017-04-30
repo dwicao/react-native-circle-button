@@ -29,6 +29,7 @@ class CircleButton extends Component {
     this.bringToRightAnimated = new Animated.Value(0);
     this.bringToTopAnimated = new Animated.Value(0);
     this.bringToBottomAnimated = new Animated.Value(0);
+    this.fadeAnimated = new Animated.Value(0);
     this._buttonCenter = this._buttonCenter.bind(this);
     this._buttonTop = this._buttonTop.bind(this);
     this._buttonRight = this._buttonRight.bind(this);
@@ -55,6 +56,7 @@ class CircleButton extends Component {
     this.createAnimation(this.bringToRightAnimated, 1, 200);
     this.createAnimation(this.bringToTopAnimated, 1, 200);
     this.createAnimation(this.bringToBottomAnimated, 1, 200);
+    this.createAnimation(this.fadeAnimated, 1, 200);
   }
 
   endAnimation() {
@@ -65,6 +67,7 @@ class CircleButton extends Component {
     this.createAnimation(this.bringToRightAnimated, 0, 200);
     this.createAnimation(this.bringToTopAnimated, 0, 200);
     this.createAnimation(this.bringToBottomAnimated, 0, 200);  
+    this.createAnimation(this.fadeAnimated, 0, 200);  
   }
 
   _buttonCenter() {
@@ -98,7 +101,12 @@ class CircleButton extends Component {
   }
 
   render() {
-    const { size, primaryColor, secondaryColor } = this.props;
+    const {
+      size,
+      primaryColor,
+      secondaryColor,
+    } = this.props;
+
 
     const styles = StyleSheet.create({
       container: {
@@ -205,32 +213,37 @@ class CircleButton extends Component {
       outputRange: [0, size - 2]
     });
 
+    const fadeInOut = this.fadeAnimated.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1]
+    });
+
     return (
       <View style={styles.container}>
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
             <TouchableOpacity onPress={this._buttonTop} activeOpacity={1} style={styles.buttonTop}>
-              <Image source={this.props.iconButtonTop} style={styles.childImage} />
+              <Animated.Image source={this.props.iconButtonTop} style={[styles.childImage, { opacity: fadeInOut }]} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity onPress={this._buttonLeft} activeOpacity={1} style={styles.buttonLeft}>
-              <Image source={this.props.iconButtonLeft} style={styles.childImage} />
+              <Animated.Image source={this.props.iconButtonLeft} style={[styles.childImage, { opacity: fadeInOut }]} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity onPress={this._buttonRight} activeOpacity={1} style={styles.buttonRight}>
-              <Image source={this.props.iconButtonRight} style={styles.childImage} />
+              <Animated.Image source={this.props.iconButtonRight} style={[styles.childImage, { opacity: fadeInOut }]} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
             <TouchableOpacity onPress={this._buttonBottom} activeOpacity={1} style={styles.buttonBottom}>
-              <Image source={this.props.iconButtonBottom} style={styles.childImage} />
+              <Animated.Image source={this.props.iconButtonBottom} style={[styles.childImage, { opacity: fadeInOut }]} />
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._buttonCenter} activeOpacity={1} style={styles.buttonCenter}>
-              <Image source={this.props.iconButtonCenter} style={styles.centerImage} />
+              <Animated.Image source={this.props.iconButtonCenter} style={styles.centerImage} />
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
