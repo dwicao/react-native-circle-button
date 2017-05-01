@@ -3,10 +3,8 @@ import {
   View,
   TouchableOpacity,
   StyleSheet,
-  Image,
   Animated,
   Easing,
-  Alert,
 } from 'react-native';
 
 class CircleButton extends Component {
@@ -109,7 +107,7 @@ class CircleButton extends Component {
 
     const eachOpacity = (index === 0)
       ? {}
-      : { opacity: opacityAnimation }
+      : { opacity: opacityAnimation };
 
     return React.Children.map(this.props.children[index], (child) => (
               React.cloneElement(
