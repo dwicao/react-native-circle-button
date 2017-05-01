@@ -4,21 +4,25 @@ import {
   StyleSheet,
   Text,
   View,
-  Platform
+  Dimensions,
+  Image,
 } from 'react-native';
 import CircleButton from './src';
+import imgWallpaper from './src/images/wallpaper.jpg';
 
 export default class sparkClick extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CircleButton primaryColor="rgba(0, 0, 0, 0.2)" secondaryColor="rgba(0, 0, 0, 0.1)"/>
+        <Image source={imgWallpaper} style={styles.img}>
+          <CircleButton primaryColor="rgba(255, 255, 255, 0.4)" secondaryColor="rgba(255, 255, 255, 0.2)"/>
+        </Image>
       </View>
     );
   }
 }
 
-const top = (Platform.OS === 'ios') ? 20 : 0;
+const DEVICE_WIDTH = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +30,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#cccccc'
+  },
+  img: {
+    flex: 1,
+		width: DEVICE_WIDTH,
+		height: null,
+		resizeMode: 'cover',
   },
 });
 
