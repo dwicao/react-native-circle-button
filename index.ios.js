@@ -22,10 +22,19 @@ export default class sparkClick extends Component {
       <View style={styles.container}>
         <Image source={imgWallpaper} style={styles.img}>
           <CircleButton primaryColor="rgba(255, 255, 255, 0.4)" secondaryColor="rgba(255, 255, 255, 0.2)">
+            {/* Center Icon */}
             <Image source={imgAdd}/>
+
+            {/* Top Icon */}
             <Image source={imgAttach}/>
+
+            {/* Right Icon */}
             <Image source={imgEmail}/>
+
+            {/* Bottom Icon */}
             <Image source={imgPerson}/>
+            
+            {/* Left Icon */}
             <Image source={imgSetting}/>
           </CircleButton>
         </Image>

@@ -242,17 +242,17 @@ class CircleButton extends Component {
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity onPress={this._buttonLeft} activeOpacity={1} style={styles.buttonLeft}>
-              {this.renderChildren(2)}
+              {this.renderChildren(4)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity onPress={this._buttonRight} activeOpacity={1} style={styles.buttonRight}>
-              {this.renderChildren(3)}
+              {this.renderChildren(2)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
             <TouchableOpacity onPress={this._buttonBottom} activeOpacity={1} style={styles.buttonBottom}>
-              {this.renderChildren(4)}
+              {this.renderChildren(3)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
