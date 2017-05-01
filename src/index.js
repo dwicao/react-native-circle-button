@@ -8,11 +8,6 @@ import {
   Easing,
   Alert,
 } from 'react-native';
-import iconAdd from './images/add.png';
-import iconSetting from './images/setting.png';
-import iconEmail from './images/email.png';
-import iconPerson from './images/person.png';
-import iconAttach from './images/attach.png';
 
 class CircleButton extends Component {
   constructor() {
@@ -103,22 +98,27 @@ class CircleButton extends Component {
   renderChildren(index) {
     const { size } = this.props;
 
-    const fadeInOut = this.fadeAnimated.interpolate({
+    const opacityAnimation = this.fadeAnimated.interpolate({
       inputRange: [0, 1],
       outputRange: [0, 1]
     });
+
+    const eachSize = (index === 0)
+      ? { width: size - 5, height: size - 5 }
+      : { width: size - 15, height: size - 15 };
+
+    const eachOpacity = (index === 0)
+      ? {}
+      : { opacity: opacityAnimation }
 
     return React.Children.map(this.props.children[index], (child) => (
               React.cloneElement(
                 <Animated.View>
                   {React.Children.map(child, (child2) => (
-                    React.cloneElement(child2, {
-                      style: { width: size - 15, height: size - 15 }
-                    })
+                    React.cloneElement(child2, { style: eachSize })
                   ))}
-                </Animated.View>, {
-                style: { opacity: fadeInOut }
-              })
+                </Animated.View>, { style: eachOpacity }
+              )
           ));
   }
 
@@ -239,31 +239,27 @@ class CircleButton extends Component {
         <Animated.View style={[ styles.circle, {width: scaleMe, height: scaleMe } ]}>
           <Animated.View style={{ top: bringMeToTop }}>
             <TouchableOpacity onPress={this._buttonTop} activeOpacity={1} style={styles.buttonTop}>
-              {this.renderChildren(0)}
-              {/*<Animated.Image source={this.props.iconButtonTop} style={[styles.childImage, { opacity: fadeInOut }]} />*/}
+              {this.renderChildren(1)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToLeft }}>
             <TouchableOpacity onPress={this._buttonLeft} activeOpacity={1} style={styles.buttonLeft}>
-              {this.renderChildren(1)}
-              {/*<Animated.Image source={this.props.iconButtonLeft} style={[styles.childImage, { opacity: fadeInOut }]} />*/}
+              {this.renderChildren(2)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ left: bringMeToRight }}>
             <TouchableOpacity onPress={this._buttonRight} activeOpacity={1} style={styles.buttonRight}>
-              {this.renderChildren(2)}
-              {/*<Animated.Image source={this.props.iconButtonRight} style={[styles.childImage, { opacity: fadeInOut }]} />*/}
+              {this.renderChildren(3)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{ top: bringMeToBottom }}>
             <TouchableOpacity onPress={this._buttonBottom} activeOpacity={1} style={styles.buttonBottom}>
-              {this.renderChildren(3)}
-              {/*<Animated.Image source={this.props.iconButtonBottom} style={[styles.childImage, { opacity: fadeInOut }]} />*/}
+              {this.renderChildren(4)}
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={[ styles.buttonWrapper, {transform: [{rotate: rotateMe}]} ]}>
             <TouchableOpacity onPress={this._buttonCenter} activeOpacity={1} style={styles.buttonCenter}>
-              <Animated.Image source={this.props.iconButtonCenter} style={styles.centerImage} />
+              {this.renderChildren(0)}
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>
@@ -278,11 +274,6 @@ CircleButton.defaultProps = {
   onPressButtonRight: () => {},
   onPressButtonBottom: () => {},
   onPressButtonLeft: () => {},
-  iconButtonCenter: iconAdd,
-  iconButtonTop: iconPerson,
-  iconButtonRight: iconAttach,
-  iconButtonBottom: iconSetting,
-  iconButtonLeft: iconEmail,
   primaryColor: '#41727E',
   secondaryColor: '#459186',
 };
@@ -293,11 +284,6 @@ CircleButton.propTypes = {
   onPressButtonRight: PropTypes.func,
   onPressButtonBottom: PropTypes.func,
   onPressButtonLeft: PropTypes.func,
-  iconButtonCenter: PropTypes.number,
-  iconButtonTop: PropTypes.number,
-  iconButtonRight: PropTypes.number,
-  iconButtonBottom: PropTypes.number,
-  iconButtonLeft: PropTypes.number,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
 };

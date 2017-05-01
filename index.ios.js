@@ -10,7 +10,11 @@ import {
 } from 'react-native';
 import CircleButton from './src';
 import imgWallpaper from './src/images/wallpaper.jpg';
-import imgDummy from './src/images/add.png';
+import imgAdd from './src/images/add.png';
+import imgAttach from './src/images/attach.png';
+import imgEmail from './src/images/email.png';
+import imgPerson from './src/images/person.png';
+import imgSetting from './src/images/setting.png';
 
 export default class sparkClick extends Component {
   render() {
@@ -18,10 +22,11 @@ export default class sparkClick extends Component {
       <View style={styles.container}>
         <Image source={imgWallpaper} style={styles.img}>
           <CircleButton primaryColor="rgba(255, 255, 255, 0.4)" secondaryColor="rgba(255, 255, 255, 0.2)">
-            <Image source={imgDummy}/>
-            <Image source={imgDummy}/>
-            <Image source={imgDummy}/>
-            <Image source={imgDummy}/>
+            <Image source={imgAdd}/>
+            <Image source={imgAttach}/>
+            <Image source={imgEmail}/>
+            <Image source={imgPerson}/>
+            <Image source={imgSetting}/>
           </CircleButton>
         </Image>
       </View>
