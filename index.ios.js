@@ -6,16 +6,23 @@ import {
   View,
   Dimensions,
   Image,
+  Animated
 } from 'react-native';
 import CircleButton from './src';
 import imgWallpaper from './src/images/wallpaper.jpg';
+import imgDummy from './src/images/add.png';
 
 export default class sparkClick extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Image source={imgWallpaper} style={styles.img}>
-          <CircleButton primaryColor="rgba(255, 255, 255, 0.4)" secondaryColor="rgba(255, 255, 255, 0.2)"/>
+          <CircleButton primaryColor="rgba(255, 255, 255, 0.4)" secondaryColor="rgba(255, 255, 255, 0.2)">
+            <Image source={imgDummy}/>
+            <Image source={imgDummy}/>
+            <Image source={imgDummy}/>
+            <Image source={imgDummy}/>
+          </CircleButton>
         </Image>
       </View>
     );
