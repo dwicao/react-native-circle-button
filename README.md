@@ -4,7 +4,8 @@ A Customizable React Native Circle Button, works on both Android and iOS.
 
 ![demo](https://raw.githubusercontent.com/dwicao/react-native-circle-button/master/demo_app.gif)
 
-> note: the lags due to gif recorder app
+> UPDATE v1.0.6: Support transparent background
+> note: It's lags due to gif recorder app, it actually works more smooth
 
 ## Inspiration
 [Ux Concept](https://dribbble.com/shots/2233249-Ux-Concept) by [Nick Kumbari](https://dribbble.com/kumbari)
