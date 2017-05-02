@@ -6,7 +6,6 @@ import {
   Image,
   Animated,
   Easing,
-  Alert,
 } from 'react-native';
 import iconAdd from './images/add.png';
 import iconSetting from './images/setting.png';
