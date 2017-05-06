@@ -1,6 +1,6 @@
 {
   "name": "react-native-circle-button",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React Native Circle Button",
   "main": "src/main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "button"
   ],
   "files": [
-    "dist",
+    "src",
     "README.md"
   ],
   "author": "Lutfian Dwi Cahyono <lutfiandwica@gmail.com> (https://dwicao.github.io/)",
