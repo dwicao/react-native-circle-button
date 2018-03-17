@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/dwicao/react-native-circle-button/issues"
   },
-  "homepage": "https://github.com/dwicao/react-native-circle-button#readme"
+  "homepage": "https://github.com/dwicao/react-native-circle-button#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1"
+  }
 }
