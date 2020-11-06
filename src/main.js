@@ -42,6 +42,7 @@ class CircleButton extends Component {
       toValue,
       duration,
       easing: Easing.linear,
+      useNativeDriver: true
     }).start();
   }
 
